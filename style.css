@@ -1,170 +1,546 @@
+/* =========================
+   Portfolio V2 by ChatGPT
+========================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
 
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    background:linear-gradient(135deg,#071426,#0f172a,#1d4ed8);
 
-color:white;
+    color:#fff;
+
+    overflow-x:hidden;
 
 }
 
+/*================ HERO ================*/
+
 .hero{
 
-text-align:center;
+    text-align:center;
 
-padding:80px 20px;
+    padding:90px 20px;
+
+    animation:fadeUp 1s ease;
 
 }
 
 .avatar{
 
-width:180px;
+    width:190px;
 
-height:180px;
+    height:190px;
 
-border-radius:50%;
+    border-radius:50%;
 
-border:5px solid white;
+    object-fit:cover;
 
-object-fit:cover;
+    border:5px solid rgba(255,255,255,.8);
 
-box-shadow:0 0 30px cyan;
+    box-shadow:
+    0 0 20px cyan,
+    0 0 40px cyan,
+    0 0 80px rgba(0,255,255,.4);
+
+    transition:.4s;
+
+}
+
+.avatar:hover{
+
+    transform:scale(1.08) rotate(3deg);
 
 }
 
 .hero h1{
 
-font-size:55px;
+    margin-top:25px;
 
-margin-top:20px;
+    font-size:62px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
 
 }
 
 .hero h2{
 
-color:#00ffff;
+    margin-top:15px;
 
-height:40px;
+    color:#35f2ff;
+
+    height:45px;
+
+    font-size:30px;
+
+    font-weight:500;
 
 }
 
 .hero p{
 
-margin:20px auto;
+    max-width:760px;
 
-max-width:700px;
+    margin:25px auto;
 
-line-height:1.8;
+    font-size:18px;
 
-font-size:18px;
+    line-height:1.8;
+
+    opacity:.95;
 
 }
 
+/*================ BUTTONS ================*/
+
 .buttons{
 
-margin-top:30px;
+    margin-top:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:22px;
 
 }
 
 .buttons a{
 
-display:inline-block;
+    display:flex;
 
-padding:15px 35px;
+    align-items:center;
 
-margin:10px;
+    justify-content:center;
 
-background:#00ffff;
+    gap:12px;
 
-color:black;
+    min-width:190px;
 
-font-weight:bold;
+    padding:16px 28px;
 
-text-decoration:none;
+    border-radius:18px;
 
-border-radius:50px;
+    text-decoration:none;
 
-transition:.3s;
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.buttons a i{
+
+    font-size:24px;
 
 }
 
 .buttons a:hover{
 
-transform:translateY(-5px);
+    transform:translateY(-8px) scale(1.05);
 
-box-shadow:0 0 20px cyan;
+    box-shadow:0 12px 35px rgba(0,255,255,.35);
 
 }
 
+/* TikTok */
+
+.buttons a:nth-child(1):hover{
+
+    background:#000;
+
+    color:#fff;
+
+}
+
+/* Facebook */
+
+.buttons a:nth-child(2):hover{
+
+    background:#1877F2;
+
+}
+
+/* Instagram */
+
+.buttons a:nth-child(3):hover{
+
+    background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+
+}
+
+/* Email */
+
+.buttons a:nth-child(4):hover{
+
+    background:#EA4335;
+
+}
+.btn-phone:hover{
+    background:linear-gradient(135deg,#00c853,#25D366,#66ff99);
+    color:#fff;
+    box-shadow:0 0 35px #25D366;
+}
+
+.btn-phone:hover i{
+    color:#fff;
+}
+
+.btn-zalo:hover{
+    background:linear-gradient(135deg,#00b4ff,#0068ff,#0052cc);
+    color:#fff;
+    box-shadow:0 0 35px #0068ff;
+}
+
+.btn-zalo:hover img{
+    transform:scale(1.1);
+}
+
+/*================ SECTION ================*/
+
 section{
 
-padding:70px 10%;
+    width:90%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:70px 0;
 
 }
 
 section h2{
 
-margin-bottom:30px;
+    text-align:center;
 
-font-size:40px;
+    font-size:42px;
+
+    margin-bottom:35px;
 
 }
 
+section p{
+
+    text-align:center;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+/*================ SKILLS ================*/
+
 .skills{
 
-display:flex;
+    display:grid;
 
-flex-wrap:wrap;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
 
-gap:20px;
+    gap:25px;
 
 }
 
 .card{
 
-padding:20px;
+    background:rgba(255,255,255,.12);
 
-background:white;
+    backdrop-filter:blur(10px);
 
-color:black;
+    border:1px solid rgba(255,255,255,.15);
 
-border-radius:15px;
+    padding:28px;
 
-font-weight:bold;
+    border-radius:20px;
 
-transition:.3s;
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    cursor:pointer;
 
 }
 
 .card:hover{
 
-transform:scale(1.08);
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,255,255,.3);
+
+    background:#19d8ff;
+
+    color:#000;
+
+}
+
+/*================ PROJECT ================*/
+
+.project{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.project:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 40px rgba(0,255,255,.3);
+
+}
+
+.project h3{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+    color:#35f2ff;
+
+}
+
+.project p{
+
+    text-align:left;
+
+    color:#fff;
+
+}
+
+/*================ FOOTER ================*/
+
+footer{
+
+    margin-top:60px;
+
+    text-align:center;
+
+    padding:35px;
+
+    background:rgba(255,255,255,.08);
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    color:#d1d5db;
+
+}
+
+/*================ SCROLL BAR ================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#08111f;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00d9ff;
+
+    border-radius:20px;
+
+}
+
+/*================ ANIMATION ================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+section{
+
+    animation:fadeUp 1s ease;
+
+}
+
+/*================ MOBILE ================*/
+
+@media(max-width:768px){
+
+.hero{
+
+    padding:70px 20px;
+
+}
+
+.hero h1{
+
+    font-size:42px;
+
+}
+
+.hero h2{
+
+    font-size:22px;
+
+}
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+.avatar{
+
+    width:150px;
+
+    height:150px;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.buttons a{
+
+    width:100%;
+
+    max-width:320px;
+
+}
+
+section h2{
+
+    font-size:32px;
+
+}
+
+.skills{
+
+    grid-template-columns:1fr 1fr;
 
 }
 
 .project{
 
-background:white;
-
-color:black;
-
-padding:30px;
-
-border-radius:20px;
+    padding:25px;
 
 }
 
-footer{
+}
 
-text-align:center;
+@media(max-width:500px){
 
-padding:30px;
+.skills{
 
-opacity:.8;
+    grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+    font-size:34px;
+
+}
+
+.hero h2{
+
+    font-size:20px;
+
+}
+
+}
+.bg-blur{
+    position:fixed;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+    animation:float 10s ease-in-out infinite;
+}
+
+.blur1{
+    background:#00ffff55;
+    top:-100px;
+    left:-100px;
+}
+
+.blur2{
+    background:#3b82f655;
+    bottom:-120px;
+    right:-100px;
+}
+
+.blur3{
+    background:#9333ea55;
+    top:40%;
+    left:50%;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-40px);
+}
 
 }
