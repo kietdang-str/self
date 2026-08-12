@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Chạy hiệu ứng gõ chữ
-    const text = "Web Developer | AI | Student";
+    const text = "Xin Chào, Rất Vui Khi Bạn Đã Vào Trang FaceBook Của Tôi. Đã Phát Hiện";
     let i = 0;
 
     function typing() {
