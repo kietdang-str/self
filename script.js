@@ -15,17 +15,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     typing();
 
-    // 2. Gửi thông báo Telegram (Bắt cả tham số ref hoặc lấy linh hoạt)
+    // 2. Gửi thông báo Telegram
     const urlParams = new URLSearchParams(window.location.search);
     let visitor = urlParams.get('ref');
 
-    // Nếu không có ?ref= mà có dính link Facebook, ta gán luôn tên đối tượng là "Từ Facebook"
     if (!visitor && window.location.search.includes('fbclid')) {
         visitor = "Bạn bè từ Facebook / Messenger";
     }
 
     if (visitor) {
-        const botToken = atob('ODc5OTkwMzkxODpBQUYzZXJKVmxJU05TRDRPRnZpalZhMURWb3lBMHJZb0kwVQ==');
+        // Dùng token mới đã mã hóa Base64 chuẩn
+        const botToken = atob('ODc5OTkwMzkxODpBQUZWUl9zbF9LWVlvR2FPallaMmFxMnZQd0VNU3FsVzI5NA==');
         const chatId = atob('ODY1MTM4Mzc2Ng==');
         
         const message = `🔥 Có người vừa truy cập portfolio!\n👤 Đối tượng: ${visitor}\n🕒 Thời gian: ${new Date().toLocaleString('vi-VN')}`;
