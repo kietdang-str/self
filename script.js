@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     typing();
 
-    // 2. Gửi thông báo Telegram (Cắt nhỏ cả Token và Chat ID để tránh bị GitHub quét)
+    // 2. Gửi thông báo Telegram (Đã thêm chống spam bằng sessionStorage)
     const urlParams = new URLSearchParams(window.location.search);
     let visitor = urlParams.get('ref');
 
@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
         visitor = "Bạn bè từ Facebook / Messenger";
     }
 
-    if (visitor) {
+    // Kiểm tra nếu có visitor VÀ trình duyệt này CHƯA từng gửi tin nhắn trước đó
+    if (visitor && !sessionStorage.getItem('sent_telegram')) {
+        
         // Cắt nhỏ Token
         const part1 = "8799903918";
         const part2 = "AAFVR_sl_KYYo";
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const part4 = "PwEMSqlW294";
         const botToken = part1 + ":" + part2 + part3 + part4;
         
-        // Cắt nhỏ Chat ID ('8651383766')
+        // Cắt nhỏ Chat ID
         const idPart1 = "865";
         const idPart2 = "138";
         const idPart3 = "3766";
@@ -40,6 +42,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const message = `🔥 Có người vừa truy cập portfolio!\n👤 Đối tượng: ${visitor}\n🕒 Thời gian: ${new Date().toLocaleString('vi-VN')}`;
         
         fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+            .then(response => {
+                if (response.ok) {
+                    // Gửi thành công thì đánh dấu lại, từ lúc này F5 hay tải lại trang cũng không gửi nữa
+                    sessionStorage.setItem('sent_telegram', 'true');
+                }
+            })
             .catch(error => console.error('Tracking error:', error));
     }
 });
