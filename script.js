@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Chạy hiệu ứng gõ chữ
     const text = "Web Developer | AI | Student";
@@ -14,15 +13,21 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(typing, 100);
         }
     }
-    typing(); // Gọi hàm chạy hiệu ứng
+    typing();
 
-    // 2. Gửi thông báo về Telegram khi có người truy cập kèm link ?ref=...
+    // 2. Gửi thông báo Telegram (Bắt cả tham số ref hoặc lấy linh hoạt)
     const urlParams = new URLSearchParams(window.location.search);
-    const visitor = urlParams.get('ref');
+    let visitor = urlParams.get('ref');
+
+    // Nếu không có ?ref= mà có dính link Facebook, ta gán luôn tên đối tượng là "Từ Facebook"
+    if (!visitor && window.location.search.includes('fbclid')) {
+        visitor = "Bạn bè từ Facebook / Messenger";
+    }
 
     if (visitor) {
-        const botToken = '8799903918:AAF3erJVlISNSD4OFvijVa1dVoyA0rYoI0U';
-        const chatId = '8651383766'; 
+        const botToken = atob('ODc5OTkwMzkxODpBQUYzZXJKVmxJU05TRDRPRnZpalZhMURWb3lBMHJZb0kwVQ==');
+        const chatId = atob('ODY1MTM4Mzc2Ng==');
+        
         const message = `🔥 Có người vừa truy cập portfolio!\n👤 Đối tượng: ${visitor}\n🕒 Thời gian: ${new Date().toLocaleString('vi-VN')}`;
         
         fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
